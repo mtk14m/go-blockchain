@@ -1,9 +1,20 @@
-BINARY_NAME=blc-1.0.0
+# Variables
+BINARY_NAME = bin/go-blc
+MAIN_FILE = ./cmd/main.go
+
+# Commandes
 build:
-	@go build -o bin/$(BINARY_NAME) -v
+	@echo "Building the application..."
+	@go build -o $(BINARY_NAME) $(MAIN_FILE)
+
 run: build
-	@./bin/$(BINARY_NAME)
-clean:
-	@rm -rf ./bin
+	@echo "Running the application..."
+	@./$(BINARY_NAME)
+
 test:
+	@echo "Running tests..."
 	@go test -v ./...
+
+clean:
+	@echo "Cleaning up..."
+	@rm -rf ./bin
